@@ -8,38 +8,54 @@ public class StudentOrderValidator {
         checkAll();
     }
     static void  checkAll (){
-        StudentOrder so = readStudentOrder();
 
-        AnswerCityRegister cityRegister = checkCityRegister (so);
-        AnswerWedding wedAnswer = checkWedding (so);
-        AnswerChildren childAnswer= checkChildren (so);
-        AnswerStudent studentAnswer = checkStudent (so);
+        while (true) {
+                StudentOrder so = readStudentOrder();
+                if (so == null){
+                    break;
+                }
+                AnswerCityRegister cityAnswer = checkCityRegister(so);
+                if (!cityAnswer.success){
+                    break;
+                }
 
-        sendMail(so);
+                AnswerWedding wedAnswer = checkWedding(so);
+                AnswerChildren childAnswer = checkChildren(so);
+                AnswerStudent studentAnswer = checkStudent(so);
+
+                sendMail(so);
+            }
+
     }
     static StudentOrder readStudentOrder (){
         StudentOrder so = new StudentOrder();
         return so;
     }
     static AnswerCityRegister checkCityRegister (StudentOrder so){
-        System.out.println( " City Register is running ");
-        AnswerCityRegister ans = new AnswerCityRegister();
-        return ans;
+        CityRegisterValidator crv1 = new CityRegisterValidator();
+        crv1.hostName = "host1";
+        crv1.login = "login1";
+        crv1.password = "Password1";
+        CityRegisterValidator crv2 = new CityRegisterValidator();
+        crv2.hostName = "host2";
+        crv2.login = "login2";
+        crv2.password = "Password2";
+        AnswerCityRegister ans1 = crv1.checkCityRegister(so);
+        AnswerCityRegister ans2 = crv2.checkCityRegister(so);
+        return ans1;
     }
     static AnswerWedding checkWedding (StudentOrder so){
-        System.out.println( " Wedding is running");
-        AnswerWedding ans = new AnswerWedding();
-        return ans;
+        return new WeddingValidator().checkWedding(so);
     }
     static AnswerChildren checkChildren (StudentOrder so){
-        System.out.println("Children is running");
-        return new AnswerChildren();
+        ChildrenValidator cv = new ChildrenValidator();
+        return cv.checkChildren(so);
     }
     static AnswerStudent checkStudent (StudentOrder so){
-        System.out.println(" Student Order is Runing");
-        return new AnswerStudent();
+        StudentValidator sv = new StudentValidator();
+        return sv.checkStudent(so);
     }
     static void sendMail (StudentOrder so){
-        System.out.println("Mail was sended");
+        new MailSender().sendMail(so);
     }
 }
