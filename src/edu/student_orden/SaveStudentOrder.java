@@ -1,3 +1,7 @@
+package edu.student_orden;
+
+import edu.student_orden.domain.StudentOrder;
+
 public class SaveStudentOrder {
     public static void main(String[] args) {
         StudentOrder so = new StudentOrder();

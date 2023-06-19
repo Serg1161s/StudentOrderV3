@@ -1,16 +1,14 @@
+package edu.student_orden.domain;
+
 public class StudentOrder {
     private String hFirstName;
     private String hLastName;
     private String wFirstName;
-   private String wLastName;
-
-
-
+    private String wLastName;
 
     public String gethFirstName() {
         return hFirstName;
     }
-
 
     public void sethFirstName(String hFirstName) {
         this.hFirstName = hFirstName;
