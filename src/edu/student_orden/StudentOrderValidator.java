@@ -1,7 +1,11 @@
-import answer.AnswerChildren;
-import answer.AnswerCityRegister;
-import answer.AnswerStudent;
-import answer.AnswerWedding;
+package edu.student_orden;
+
+import edu.student_orden.domain.*;
+import edu.student_orden.mail.MailSender;
+import edu.student_orden.validator.ChildrenValidator;
+import edu.student_orden.validator.CityRegisterValidator;
+import edu.student_orden.validator.StudentValidator;
+import edu.student_orden.validator.WeddingValidator;
 
 public class StudentOrderValidator {
     public static void main(String[] args) {
@@ -33,15 +37,11 @@ public class StudentOrderValidator {
     }
     static AnswerCityRegister checkCityRegister (StudentOrder so){
         CityRegisterValidator crv1 = new CityRegisterValidator();
-        crv1.hostName = "host1";
-        crv1.login = "login1";
-        crv1.password = "Password1";
-        CityRegisterValidator crv2 = new CityRegisterValidator();
-        crv2.hostName = "host2";
-        crv2.login = "login2";
-        crv2.password = "Password2";
+        crv1.setHostName("host1");
+        crv1.setLogin("login1");
+        crv1.setPassword("Password1");
         AnswerCityRegister ans1 = crv1.checkCityRegister(so);
-        AnswerCityRegister ans2 = crv2.checkCityRegister(so);
+
         return ans1;
     }
     static AnswerWedding checkWedding (StudentOrder so){
