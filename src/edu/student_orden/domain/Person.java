@@ -8,12 +8,28 @@ public abstract class Person {
    private String patronymic;
    private LocalDate dateOfBirth;
    private Address address;
-public Person (){
-   System.out.println("Person is created");
-}
-   public String getPersonString (){
-      return getGivenName() + ", " + getSurName();
+
+   public Person() {
    }
+
+   public Person(String surName, String givenName, String patronymic, LocalDate dateOfBirth) {
+      this.surName = surName;
+      this.givenName = givenName;
+      this.patronymic = patronymic;
+      this.dateOfBirth = dateOfBirth;
+   }
+
+   @Override
+   public String toString() {
+      return "Person{" +
+              "surName='" + surName + '\'' +
+              ", givenName='" + givenName + '\'' +
+              ", patronymic='" + patronymic + '\'' +
+              ", dateOfBirth=" + dateOfBirth +
+              ", address=" + address +
+              '}';
+   }
+
    public String getSurName() {
       return surName;
    }

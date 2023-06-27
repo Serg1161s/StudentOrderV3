@@ -9,14 +9,16 @@ public class CityRegisterValidator {
    private int port;
    private String login;
    private String password;
-   public AnswerCityRegister checkCityRegister (StudentOrder so){
-        System.out.println( " City Register is running - " +
-                "hostNme: " + hostName +
-                "login: " + login +
-                "Password: " + password);
-        AnswerCityRegister ans = new AnswerCityRegister();
-        ans.success = false;
-        return ans;
+   private RealCityRegisterChecker personChecker;
+
+    public CityRegisterValidator() {
+        personChecker = new RealCityRegisterChecker();
+    }
+
+    public AnswerCityRegister checkCityRegister (StudentOrder so){
+        personChecker.checkerResponse(so.getHusband());
+       AnswerCityRegister ans = new AnswerCityRegister();
+       return ans;
     }
 
     public String getHostName() {
