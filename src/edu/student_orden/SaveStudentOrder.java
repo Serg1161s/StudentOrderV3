@@ -5,12 +5,10 @@ import edu.student_orden.domain.StudentOrder;
 
 public class SaveStudentOrder {
     public static void main(String[] args) {
-        buildStudentOrder();
 
-//        StudentOrder so = new StudentOrder();
-//
-//        long ans = saveStudentOrder (so);
-//        System.out.println("Student Order saved");
+        StudentOrder so = new StudentOrder();
+        long ans = saveStudentOrder (so);
+        System.out.println("Student Order saved");
     }
     static long saveStudentOrder (StudentOrder so){
         long ans = 199;
@@ -18,11 +16,9 @@ public class SaveStudentOrder {
         return ans;
     }
 
-    static StudentOrder buildStudentOrder(){
+    static StudentOrder buildStudentOrder(long id){
         StudentOrder so = new StudentOrder();
-        Adult husband = new Adult();
-//        husband.setGivenName("Andrey");
-//        so.setHusband(husband);
+        so.setStudentOrderId(id);
 
         return so;
     }
