@@ -9,14 +9,14 @@ public class CityRegisterValidator {
    private int port;
    private String login;
    private String password;
-   private RealCityRegisterChecker personChecker;
+   private CityRegisterChecker personChecker;
 
     public CityRegisterValidator() {
         personChecker = new RealCityRegisterChecker();
     }
 
     public AnswerCityRegister checkCityRegister (StudentOrder so){
-        personChecker.checkerResponse(so.getHusband());
+      personChecker.checkPerson(so.getHusband());
        AnswerCityRegister ans = new AnswerCityRegister();
        return ans;
     }
