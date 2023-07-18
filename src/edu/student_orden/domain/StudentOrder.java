@@ -1,11 +1,40 @@
 package edu.student_orden.domain;
 
+import java.time.LocalDate;
+
 public class StudentOrder {
 
     private  long studentOrderId;
     private Adult husband;
     private Adult wife;
     private Child child;
+    private String marriageCertificateID;
+    private LocalDate marriageDate;
+    private String marriageOffice;
+
+    public String getMarriageCertificateID() {
+        return marriageCertificateID;
+    }
+
+    public void setMarriageCertificateID(String marriageCertificateID) {
+        this.marriageCertificateID = marriageCertificateID;
+    }
+
+    public LocalDate getMarriageDate() {
+        return marriageDate;
+    }
+
+    public void setMarriageDate(LocalDate marriageDate) {
+        this.marriageDate = marriageDate;
+    }
+
+    public String getMarriageOffice() {
+        return marriageOffice;
+    }
+
+    public void setMarriageOffice(String marriageOffice) {
+        this.marriageOffice = marriageOffice;
+    }
 
     public long getStudentOrderId() {
         return studentOrderId;
