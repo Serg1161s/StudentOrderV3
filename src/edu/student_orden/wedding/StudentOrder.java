@@ -1,4 +1,4 @@
-package edu.student_orden.domain;
+package edu.student_orden.wedding;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -62,7 +62,7 @@ public class StudentOrder {
         this.wife = wife;
     }
 
-    public List<Child> getChild() {
+    public List<Child> getChildren() {
         return children;
     }
 

@@ -1,4 +1,4 @@
-package edu.student_orden.domain;
+package edu.student_orden.wedding;
 
 public class Address {
     private String postCode;

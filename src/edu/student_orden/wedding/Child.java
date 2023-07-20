@@ -1,4 +1,4 @@
-package edu.student_orden.domain;
+package edu.student_orden.wedding;
 
 import java.time.LocalDate;
 

@@ -1,11 +1,18 @@
 package edu.student_orden;
 
-import edu.student_orden.domain.*;
+import edu.student_orden.children.AnswerChildren;
 import edu.student_orden.mail.MailSender;
+import edu.student_orden.register.AnswerCityRegister;
+import edu.student_orden.student.AnswerStudent;
+import edu.student_orden.student.AnswerWedding;
 import edu.student_orden.validator.ChildrenValidator;
 import edu.student_orden.validator.CityRegisterValidator;
 import edu.student_orden.validator.StudentValidator;
 import edu.student_orden.validator.WeddingValidator;
+import edu.student_orden.wedding.StudentOrder;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class StudentOrderValidator {
     public ChildrenValidator  childrenVal;
@@ -29,19 +36,19 @@ public StudentOrderValidator (){
         sov.checkAll();
     }
     public void  checkAll () {
-        StudentOrder[] soArray  = readStudentOrders();
-        for (StudentOrder so:soArray) {
-            System.out.println("");
+        List<StudentOrder> soList  = readStudentOrders();
+        for (StudentOrder so:soList) {
             checkOneOrder(so);
         }
     }
-    public StudentOrder[] readStudentOrders(){
-        StudentOrder[] soArray = new StudentOrder[3];
+    public List<StudentOrder> readStudentOrders(){
+        List<StudentOrder> soList = new LinkedList<>();
 
-        for (int c=0; c< soArray.length; c++) {
-            soArray[c] = SaveStudentOrder.buildStudentOrder(c);
+        for (int c=0; c< 5; c++) {
+           StudentOrder so = SaveStudentOrder.buildStudentOrder(c);
+           soList.add(so);
         }
-        return soArray;
+        return soList;
     }
 
 

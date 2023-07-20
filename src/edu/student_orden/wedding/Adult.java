@@ -1,7 +1,6 @@
-package edu.student_orden.domain;
+package edu.student_orden.wedding;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Adult extends Person{
     private String passportSeria;

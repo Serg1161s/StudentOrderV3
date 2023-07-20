@@ -1,9 +1,9 @@
 package edu.student_orden;
 
-import edu.student_orden.domain.Address;
-import edu.student_orden.domain.Adult;
-import edu.student_orden.domain.Child;
-import edu.student_orden.domain.StudentOrder;
+import edu.student_orden.wedding.Address;
+import edu.student_orden.wedding.Adult;
+import edu.student_orden.wedding.Child;
+import edu.student_orden.wedding.StudentOrder;
 
 import java.time.LocalDate;
 

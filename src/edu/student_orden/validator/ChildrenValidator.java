@@ -1,7 +1,7 @@
 package edu.student_orden.validator;
 
-import edu.student_orden.domain.AnswerChildren;
-import edu.student_orden.domain.StudentOrder;
+import edu.student_orden.children.AnswerChildren;
+import edu.student_orden.wedding.StudentOrder;
 
 public class ChildrenValidator {
      public AnswerChildren checkChildren (StudentOrder so){

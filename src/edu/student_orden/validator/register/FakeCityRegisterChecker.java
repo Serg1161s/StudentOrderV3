@@ -1,9 +1,9 @@
-package edu.student_orden.validator;
+package edu.student_orden.validator.register;
 
-import edu.student_orden.domain.Adult;
-import edu.student_orden.domain.Child;
-import edu.student_orden.domain.CityRegisterCheckerResponse;
-import edu.student_orden.domain.Person;
+import edu.student_orden.wedding.Adult;
+import edu.student_orden.wedding.Child;
+import edu.student_orden.register.CityRegisterResponse;
+import edu.student_orden.wedding.Person;
 import edu.student_orden.exaption.CityRegisterException;
 
 public class FakeCityRegisterChecker implements CityRegisterChecker {
@@ -14,9 +14,9 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
     private static final String ERROR_1 = "1002";
     private static final String ERROR_2 = "2002";
 
-    public CityRegisterCheckerResponse checkPerson(Person person)
+    public CityRegisterResponse checkPerson(Person person)
             throws CityRegisterException {
-        CityRegisterCheckerResponse res = new CityRegisterCheckerResponse();
+        CityRegisterResponse res = new CityRegisterResponse();
         if (person instanceof Adult){
             Adult t = (Adult) person;
             if (t.getPassportSeria().equals(GOOD_1)|| t.getPassportSeria().equals(GOOD_2)){
