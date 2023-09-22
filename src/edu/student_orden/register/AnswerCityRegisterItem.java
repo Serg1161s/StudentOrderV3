@@ -41,7 +41,7 @@ public class AnswerCityRegisterItem
         return person;
     }
 
-    public AnswerCityRegisterItem(CityError error, CityStatus status, Person person) {
+    public AnswerCityRegisterItem(CityError error, Person person, CityStatus status) {
         this.error = error;
         this.status = status;
         this.person = person;

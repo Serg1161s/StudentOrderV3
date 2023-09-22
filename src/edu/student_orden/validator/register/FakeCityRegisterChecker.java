@@ -1,5 +1,6 @@
 package edu.student_orden.validator.register;
 
+import edu.student_orden.exaption.TransportException;
 import edu.student_orden.wedding.Adult;
 import edu.student_orden.wedding.Child;
 import edu.student_orden.register.CityRegisterResponse;
@@ -13,9 +14,11 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
     private static final String BAD_2 = "2001";
     private static final String ERROR_1 = "1002";
     private static final String ERROR_2 = "2002";
+    private static final String ERROR_T_1 = "1003";
+    private static final String ERROR_T_2 = "2003";
 
     public CityRegisterResponse checkPerson(Person person)
-            throws CityRegisterException {
+            throws CityRegisterException, TransportException {
         CityRegisterResponse res = new CityRegisterResponse();
         if (person instanceof Adult){
             Adult t = (Adult) person;
@@ -27,11 +30,15 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
                 res.setExisting(false);
             }
             if (t.getPassportSeria().equals(ERROR_1)|| t.getPassportSeria().equals(ERROR_2)){
-                CityRegisterException ex = new CityRegisterException("Fake Error" + t.getPassportSeria());
+                CityRegisterException ex = new CityRegisterException("1","GRN Error" + t.getPassportSeria());
                     throw ex;
 
             }
+            if (t.getPassportSeria().equals(ERROR_T_1)|| t.getPassportSeria().equals(ERROR_T_2)){
+                TransportException ex = new TransportException("Transport Error" + t.getPassportSeria());
+                throw ex;
 
+            }
         }
         if (person instanceof Child){
 
