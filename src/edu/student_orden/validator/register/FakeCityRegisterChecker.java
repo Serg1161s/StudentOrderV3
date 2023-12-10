@@ -1,10 +1,10 @@
 package edu.student_orden.validator.register;
 
 import edu.student_orden.exaption.TransportException;
-import edu.student_orden.wedding.Adult;
-import edu.student_orden.wedding.Child;
-import edu.student_orden.register.CityRegisterResponse;
-import edu.student_orden.wedding.Person;
+import edu.student_orden.domain.wedding.Adult;
+import edu.student_orden.domain.wedding.Child;
+import edu.student_orden.domain.register.CityRegisterResponse;
+import edu.student_orden.domain.wedding.Person;
 import edu.student_orden.exaption.CityRegisterException;
 
 public class FakeCityRegisterChecker implements CityRegisterChecker {

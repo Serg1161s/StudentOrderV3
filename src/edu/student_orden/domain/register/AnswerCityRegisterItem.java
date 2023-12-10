@@ -1,6 +1,6 @@
-package edu.student_orden.register;
+package edu.student_orden.domain.register;
 
-import edu.student_orden.wedding.Person;
+import edu.student_orden.domain.wedding.Person;
 
 public class AnswerCityRegisterItem
 {

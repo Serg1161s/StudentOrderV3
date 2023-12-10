@@ -81,7 +81,7 @@ CREATE TABLE jc_student_child
         c_certificate_number varchar (10) not null,
         c_certificate_date date not null,
         c_register_office_id integer not null,
-        c_post_index varchar (10),
+        c_post_index varchar (10) not null,
         c_street_code integer not null,
         c_building varchar (10) not null,
         c_extension varchar (10),

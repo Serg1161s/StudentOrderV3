@@ -1,14 +1,17 @@
 package edu.student_orden;
 
-import edu.student_orden.wedding.Address;
-import edu.student_orden.wedding.Adult;
-import edu.student_orden.wedding.Child;
-import edu.student_orden.wedding.StudentOrder;
+import edu.student_orden.domain.wedding.*;
+import org.postgresql.Driver;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDate;
 
 public class SaveStudentOrder {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+
 
         StudentOrder so = new StudentOrder();
         long ans = saveStudentOrder (so);
@@ -27,7 +30,9 @@ public class SaveStudentOrder {
         so.setMarriageDate(LocalDate.of(2016, 7,4));
         so.setMarriageOffice("Отдел ЗАГС");
 
-        Address address = new Address("19500", "Заневский пр.", "12","","142");
+        Street street = new Street(1L , "Заневский пр." );
+
+        Address address = new Address("19500", street, "12","","142");
 
         Adult husband = new Adult("Петров", "Виктор", "Сергеевич", LocalDate.of(1997,8,24));
         husband.setPassportSeria("" + (1000+id));

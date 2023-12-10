@@ -1,14 +1,14 @@
 package edu.student_orden.validator;
 
 import edu.student_orden.exaption.TransportException;
-import edu.student_orden.register.AnswerCityRegister;
-import edu.student_orden.register.AnswerCityRegisterItem;
+import edu.student_orden.domain.register.AnswerCityRegister;
+import edu.student_orden.domain.register.AnswerCityRegisterItem;
 import edu.student_orden.validator.register.CityRegisterChecker;
 import edu.student_orden.validator.register.FakeCityRegisterChecker;
-import edu.student_orden.wedding.Child;
-import edu.student_orden.register.CityRegisterResponse;
-import edu.student_orden.wedding.Person;
-import edu.student_orden.wedding.StudentOrder;
+import edu.student_orden.domain.wedding.Child;
+import edu.student_orden.domain.register.CityRegisterResponse;
+import edu.student_orden.domain.wedding.Person;
+import edu.student_orden.domain.wedding.StudentOrder;
 import edu.student_orden.exaption.CityRegisterException;
 
 public class CityRegisterValidator {

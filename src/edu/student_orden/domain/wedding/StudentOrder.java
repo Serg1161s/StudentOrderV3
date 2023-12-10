@@ -1,4 +1,4 @@
-package edu.student_orden.wedding;
+package edu.student_orden.domain.wedding;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
