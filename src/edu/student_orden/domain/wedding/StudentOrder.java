@@ -12,15 +12,9 @@ public class StudentOrder {
     private List<Child> children;
     private String marriageCertificateID;
     private LocalDate marriageDate;
-    private String marriageOffice;
+    private RegisterOffice marriageOffice;
 
-    public String getMarriageCertificateID() {
-        return marriageCertificateID;
-    }
 
-    public void setMarriageCertificateID(String marriageCertificateID) {
-        this.marriageCertificateID = marriageCertificateID;
-    }
 
     public LocalDate getMarriageDate() {
         return marriageDate;
@@ -30,11 +24,19 @@ public class StudentOrder {
         this.marriageDate = marriageDate;
     }
 
-    public String getMarriageOffice() {
+    public String getMarriageCertificateID() {
+        return marriageCertificateID;
+    }
+
+    public void setMarriageCertificateID(String marriageCertificateID) {
+        this.marriageCertificateID = marriageCertificateID;
+    }
+
+    public RegisterOffice getMarriageOffice() {
         return marriageOffice;
     }
 
-    public void setMarriageOffice(String marriageOffice) {
+    public void setMarriageOffice(RegisterOffice marriageOffice) {
         this.marriageOffice = marriageOffice;
     }
 
