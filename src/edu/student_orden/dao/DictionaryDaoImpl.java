@@ -1,6 +1,7 @@
 package edu.student_orden.dao;
 
 import edu.student_orden.config.Config;
+import edu.student_orden.domain.wedding.CountryArea;
 import edu.student_orden.domain.wedding.PassportOffice;
 import edu.student_orden.domain.wedding.RegisterOffice;
 import edu.student_orden.domain.wedding.Street;
@@ -18,6 +19,8 @@ public class DictionaryDaoImpl implements DictionaryDao
             "FROM jc_register_office WHERE r_office_area_id=?";
     private static final String GET_PASSPORT_OFFICE = "SELECT * " +
             "FROM jc_passport_office WHERE p_office_area_id=?";
+    private static final String GET_AREA_ID = "SELECT * " +
+        "FROM jc_country_struct WHERE area_id LIKE ? and area_id <> ?";
     private Connection getConnection() throws SQLException {
         // Class.forName("org.postgresql.Driver");
         Connection conn = DriverManager.getConnection(
@@ -69,18 +72,51 @@ public class DictionaryDaoImpl implements DictionaryDao
 
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(GET_REGISTER_OFFICE)) {
-            stmt.setString(1, areaId );
+            stmt.setString(1, areaId);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                while (rs.next()) {
                     RegisterOffice str = new RegisterOffice(rs.getLong("r_office_id"), rs.getString("r_office_area_id"), rs.getString("r_office_name"));
                     results.add(str);
-                }
             }
         } catch (SQLException ex) {
             throw new DaoException(ex);
         }
         return results;
+    }
+
+    @Override
+    public List<CountryArea> findArea(String areaID) throws DaoException {
+        List<CountryArea> results = new LinkedList<>();
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(GET_AREA_ID)) {
+            String param1 =  buildParam(areaID);
+            String param2 = areaID;
+            stmt.setString(1, param1 );
+            stmt.setString(2, param2);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                    CountryArea str = new CountryArea(rs.getString("area_id"), rs.getString("area_name"));
+                    results.add(str);
+            }
+        } catch (SQLException ex) {
+            throw new DaoException(ex);
+        }
+        return results;
+    }
+
+    private String buildParam(String areaID) throws SQLException{
+        if (areaID == null || areaID.trim().isEmpty()){
+            return "__0000000000";
+        } else if (areaID.endsWith("0000000000")){
+           return areaID.substring(0,2) + "___0000000";
+        } else if (areaID.endsWith("0000000")) {
+            return areaID.substring(0,5) + "___0000";
+        } else if (areaID.endsWith("0000")) {
+            return areaID.substring(0,8) + "____";
+        }
+        throw new SQLException("Invalid parameter 'areaId" + areaID);
+
     }
 
 }
