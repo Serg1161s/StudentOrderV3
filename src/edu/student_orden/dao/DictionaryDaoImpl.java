@@ -21,6 +21,8 @@ public class DictionaryDaoImpl implements DictionaryDao
             "FROM jc_passport_office WHERE p_office_area_id=?";
     private static final String GET_AREA_ID = "SELECT * " +
         "FROM jc_country_struct WHERE area_id LIKE ? and area_id <> ?";
+
+    //TODO one implementation
     private Connection getConnection() throws SQLException {
         // Class.forName("org.postgresql.Driver");
         Connection conn = DriverManager.getConnection(
