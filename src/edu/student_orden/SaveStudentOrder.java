@@ -1,6 +1,8 @@
 package edu.student_orden;
 
 import edu.student_orden.dao.DictionaryDaoImpl;
+import edu.student_orden.dao.StudentDaoImpl;
+import edu.student_orden.dao.StudentOrderDao;
 import edu.student_orden.domain.wedding.*;
 
 import java.time.LocalDate;
@@ -20,32 +22,34 @@ public class SaveStudentOrder {
 //        for (PassportOffice s:passportOffices){
 //            System.out.println(s.getOfficeName());
 //        }
-        List<CountryArea> countryArea1 = new DictionaryDaoImpl().findArea("");
-        for (CountryArea c:countryArea1){
-            System.out.println(c.getAreaID() + ":" + c.getAreaName());
-        }
-        System.out.println("________");
-        List<CountryArea> countryArea2 = new DictionaryDaoImpl().findArea("020000000000");
-        for (CountryArea c:countryArea2){
-            System.out.println(c.getAreaID() + ":" + c.getAreaName());
-        }
-        System.out.println("________");
-        List<CountryArea> countryArea3 = new DictionaryDaoImpl().findArea("020010000000");
-        for (CountryArea c:countryArea3){
-            System.out.println(c.getAreaID() + ":" + c.getAreaName());
-        }
-        System.out.println("________");
-        List<CountryArea> countryArea4 = new DictionaryDaoImpl().findArea("020010010000");
-        for (CountryArea c:countryArea4){
-            System.out.println(c.getAreaID() + ":" + c.getAreaName());
-        }
+//        List<CountryArea> countryArea1 = new DictionaryDaoImpl().findArea("");
+//        for (CountryArea c:countryArea1){
+//            System.out.println(c.getAreaID() + ":" + c.getAreaName());
+//        }
+//        System.out.println("________");
+//        List<CountryArea> countryArea2 = new DictionaryDaoImpl().findArea("020000000000");
+//        for (CountryArea c:countryArea2){
+//            System.out.println(c.getAreaID() + ":" + c.getAreaName());
+//        }
+//        System.out.println("________");
+//        List<CountryArea> countryArea3 = new DictionaryDaoImpl().findArea("020010000000");
+//        for (CountryArea c:countryArea3){
+//            System.out.println(c.getAreaID() + ":" + c.getAreaName());
+//        }
+//        System.out.println("________");
+//        List<CountryArea> countryArea4 = new DictionaryDaoImpl().findArea("020010010000");
+//        for (CountryArea c:countryArea4){
+//            System.out.println(c.getAreaID() + ":" + c.getAreaName());
+//        }
 
+        StudentOrder s = buildStudentOrder(10);
+        StudentOrderDao dao = new StudentDaoImpl();
+        Long id = dao.saveStudentOrder(s);
+        System.out.println(id);
 
-
-
-        StudentOrder so = new StudentOrder();
-        long ans = saveStudentOrder (so);
-        System.out.println("Student Order saved");
+//        StudentOrder so = new StudentOrder();
+//        long ans = saveStudentOrder (so);
+//        System.out.println("Student Order saved");
     }
     static long saveStudentOrder (StudentOrder so){
         long ans = 199;
