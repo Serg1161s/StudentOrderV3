@@ -14,23 +14,23 @@ public class StudentDaoImpl implements StudentOrderDao
                         "student_order_status, student_order_date, " +
                         "h_sur_name, h_given_name, h_patronymic, h_date_of_birthday, " +
                         "h_passport_seria, h_passport_number, h_passport_date, h_passport_office_id, " +
-                        "h_post_index, h_street_code, h_building, h_extension, h_apartment, w_sur_name, " +
-                        "w_given_name, w_patronymic, w_date_of_birthday, w_passport_seria, w_passport_number, " +
+                        "h_post_index, h_street_code, h_building, h_extension, h_apartment, h_university_id, h_student_id," +
+                        " w_sur_name, w_given_name, w_patronymic, w_date_of_birthday, w_passport_seria, w_passport_number, " +
                         "w_passport_date, w_passport_office_id, w_post_index, w_street_code, w_building, " +
-                        "w_extension, w_apartment, certificate_id, register_office_id, marriage_date)" +
+                        "w_extension, w_apartment ,w_university_id, w_student_id,certificate_id, register_office_id, marriage_date)" +
                         "VALUES (?, ?," +
                         "?, ?, ?, ?," +
-                        "?, ?, ?, ?, " +
-                        "?, ?, ?, ?, ?, ?," +
                         "?, ?, ?, ?, ?, " +
-                        "?, ?, ?, ?, ?," +
+                        "?, ?, ?, ?, ?, ?, ?," +
+                        "?, ?, ?, ?, ?, " +
+                        "?, ?, ?, ?, ?, ?, ?," +
                         "?, ?, ?, ?, ?);";
 
     private static final String INSERT_CHID =
             "INSERT INTO jc_student_child(student_order_id, c_sur_name, c_given_name," +
                     " c_patronymic, c_date_of_birthday, c_certificate_number, c_certificate_date," +
                     " c_register_office_id, c_post_index, c_street_code, c_building, c_extension, c_apartment)" +
-                    " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                    " VALUES (?, ?, ?, ?, ?,  ?, ?, ?,?, ?, ?, ?, ?);";
 
     //TODO one implementation
     private Connection getConnection() throws SQLException {
@@ -56,11 +56,11 @@ public class StudentDaoImpl implements StudentOrderDao
                 stmt.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
                 //Husband and wife
                 setParamForAdult(stmt, 3, so.getHusband());
-                setParamForAdult(stmt,16, so.getWife());
+                setParamForAdult(stmt,18, so.getWife());
                 // Marriage
-                stmt.setString(29, so.getMarriageCertificateID());
-                stmt.setLong(30, so.getMarriageOffice().getOfficeId());
-                stmt.setDate(31, Date.valueOf(so.getMarriageDate()));
+                stmt.setString(33, so.getMarriageCertificateID());
+                stmt.setLong(34, so.getMarriageOffice().getOfficeId());
+                stmt.setDate(35, Date.valueOf(so.getMarriageDate()));
 
                 stmt.executeUpdate();
                 ResultSet gkRs = stmt.getGeneratedKeys();
@@ -108,6 +108,8 @@ public class StudentDaoImpl implements StudentOrderDao
         stmt.setDate(  start +6, Date.valueOf(adult.getIssueDate()) );
         stmt.setLong(  start +7, adult.getIssueDepartment().getOfficeId());
         setParamForAddress(stmt, start+8, adult);
+        stmt.setLong(start+13, adult.getUniversity().getUniversityId());
+        stmt.setString(start+14, adult.getStudentId());
     }
     private void setParamForChild(PreparedStatement stmt, Child child) throws  SQLException{
         setParamsForPerson(stmt,2,child);

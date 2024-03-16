@@ -26,11 +26,11 @@ public class SaveStudentOrder {
 //        for (CountryArea c:countryArea1){
 //            System.out.println(c.getAreaID() + ":" + c.getAreaName());
 //        }
-//        System.out.println("________");
-//        List<CountryArea> countryArea2 = new DictionaryDaoImpl().findArea("020000000000");
-//        for (CountryArea c:countryArea2){
-//            System.out.println(c.getAreaID() + ":" + c.getAreaName());
-//        }
+        System.out.println("________");
+        List<CountryArea> countryArea2 = new DictionaryDaoImpl().findArea("020000000000");
+        for (CountryArea c:countryArea2){
+            System.out.println(c.getAreaID() + ":" + c.getAreaName());
+        }
 //        System.out.println("________");
 //        List<CountryArea> countryArea3 = new DictionaryDaoImpl().findArea("020010000000");
 //        for (CountryArea c:countryArea3){
@@ -77,6 +77,8 @@ public class SaveStudentOrder {
         husband.setIssueDepartment(po1);
         husband.setStudentId("" + (100000 + id));
         husband.setAddress(address);
+        husband.setUniversity(new University(2l,""));
+        husband.setStudentId("HHH1234");
 
 
         Adult wife = new Adult("Петрова", "Вероника", "Алексевна", LocalDate.of(1998,3,12));
@@ -87,6 +89,8 @@ public class SaveStudentOrder {
         wife.setIssueDepartment(po2);
         wife.setStudentId("" + (200000 + id));
         wife.setAddress(address);
+        wife.setUniversity(new University(1L, ""));
+        wife.setStudentId("WW12345");
 
         Child child1 = new Child("Петрова", "Ирина", "Викторовна",LocalDate.of(2018,6,29));
         child1.setCertificateNumber("" + (300000 + id));
