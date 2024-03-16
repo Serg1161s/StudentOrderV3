@@ -6,6 +6,8 @@ import edu.student_orden.exaption.DaoException;
 
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
 
 public class StudentDaoImpl implements StudentOrderDao
 {
@@ -26,12 +28,13 @@ public class StudentDaoImpl implements StudentOrderDao
                         "?, ?, ?, ?, ?, ?, ?," +
                         "?, ?, ?, ?, ?);";
 
-    private static final String INSERT_CHID =
+    private static final String INSERT_CHILD =
             "INSERT INTO jc_student_child(student_order_id, c_sur_name, c_given_name," +
                     " c_patronymic, c_date_of_birthday, c_certificate_number, c_certificate_date," +
                     " c_register_office_id, c_post_index, c_street_code, c_building, c_extension, c_apartment)" +
                     " VALUES (?, ?, ?, ?, ?,  ?, ?, ?,?, ?, ?, ?, ?);";
-
+    private static final String SELECT_ORDER =
+            "SELECT * FROM jc_student_order WHERE student_order_status = 0 ORDERED BY student_order_date";
     //TODO one implementation
     private Connection getConnection() throws SQLException {
         // Class.forName("org.postgresql.Driver");
@@ -82,8 +85,23 @@ public class StudentDaoImpl implements StudentOrderDao
         return result;
     }
 
+    @Override
+    public List<StudentOrder> getStudentOrder() throws DaoException {
+        List<StudentOrder> results = new LinkedList<>();
+
+        try (Connection connection = getConnection();
+        PreparedStatement statement = connection.prepareStatement(SELECT_ORDER))
+        {
+
+        } catch (Exception ex) {
+            throw new DaoException(ex);
+        }
+
+        return results;
+    }
+
     private void saveChildren(Connection conn, StudentOrder so, Long soId) throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement((INSERT_CHID))) {
+        try (PreparedStatement stmt = conn.prepareStatement((INSERT_CHILD))) {
             int counter = 0;
             for (Child child : so.getChildren()) {
                 stmt.setLong(1, soId);
