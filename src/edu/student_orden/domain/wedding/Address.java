@@ -14,6 +14,9 @@ public class Address {
         this.extension = extension;
         this.apartment = apartment;
     }
+    public Address(){
+
+    }
 
     public String getPostCode() {
         return postCode;

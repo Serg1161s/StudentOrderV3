@@ -1,7 +1,6 @@
 package edu.student_orden;
 
-import edu.student_orden.dao.DictionaryDaoImpl;
-import edu.student_orden.dao.StudentDaoImpl;
+import edu.student_orden.dao.StudentOrderDaoImpl;
 import edu.student_orden.dao.StudentOrderDao;
 import edu.student_orden.domain.wedding.*;
 
@@ -26,11 +25,11 @@ public class SaveStudentOrder {
 //        for (CountryArea c:countryArea1){
 //            System.out.println(c.getAreaID() + ":" + c.getAreaName());
 //        }
-        System.out.println("________");
-        List<CountryArea> countryArea2 = new DictionaryDaoImpl().findArea("020000000000");
-        for (CountryArea c:countryArea2){
-            System.out.println(c.getAreaID() + ":" + c.getAreaName());
-        }
+//        System.out.println("________");
+//        List<CountryArea> countryArea2 = new DictionaryDaoImpl().findArea("020000000000");
+//        for (CountryArea c:countryArea2){
+//            System.out.println(c.getAreaID() + ":" + c.getAreaName());
+//        }
 //        System.out.println("________");
 //        List<CountryArea> countryArea3 = new DictionaryDaoImpl().findArea("020010000000");
 //        for (CountryArea c:countryArea3){
@@ -42,10 +41,15 @@ public class SaveStudentOrder {
 //            System.out.println(c.getAreaID() + ":" + c.getAreaName());
 //        }
 
-        StudentOrder s = buildStudentOrder(10);
-        StudentOrderDao dao = new StudentDaoImpl();
-        Long id = dao.saveStudentOrder(s);
-        System.out.println(id);
+//        StudentOrder s = buildStudentOrder(10);
+        StudentOrderDao dao = new StudentOrderDaoImpl();
+//        Long id = dao.saveStudentOrder(s);
+//        System.out.println(id);
+        List<StudentOrder> soList = dao.getStudentOrder();
+        for (StudentOrder so:soList) {
+            System.out.println(so.getStudentOrderId());
+
+        }
 
 //        StudentOrder so = new StudentOrder();
 //        long ans = saveStudentOrder (so);
@@ -73,13 +77,12 @@ public class SaveStudentOrder {
         husband.setPassportSeria("" + (1000+id));
         husband.setPassportNumber("" + (10000 + id));
         husband.setIssueDate(LocalDate.of(2017,9,15));
-        PassportOffice po1 = new PassportOffice(1L,"","" );
+        PassportOffice po1 = new PassportOffice(1L,"12","12" );
         husband.setIssueDepartment(po1);
         husband.setStudentId("" + (100000 + id));
         husband.setAddress(address);
         husband.setUniversity(new University(2l,""));
         husband.setStudentId("HHH1234");
-
 
         Adult wife = new Adult("Петрова", "Вероника", "Алексевна", LocalDate.of(1998,3,12));
         wife.setPassportSeria("" + (2000+id));
